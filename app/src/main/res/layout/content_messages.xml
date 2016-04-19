@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="20dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Messages"
+    tools:showIn="@layout/activity_messages">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Mensajes con contenido negativo"
+        android:id="@+id/edtTitulo1"
+        android:textColor="#000000" />
+
+    <ListView
+        android:id="@+id/lvNegativos"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center_vertical"
+        >
+    </ListView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Mensajes con contenido neutro"
+        android:id="@+id/edtTitulo2"
+        android:textColor="#000000" />
+    <ListView
+        android:id="@+id/lvPositivos"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center_vertical"
+        >
+    </ListView>
+</LinearLayout>
