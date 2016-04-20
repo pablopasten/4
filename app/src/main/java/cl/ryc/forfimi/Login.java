@@ -52,6 +52,7 @@ public class Login extends AppCompatActivity {
     ProgressDialog pd;
     CallbackManager callbackManager;
     LoginButton loginButton;
+    static String FacebookId;
 
 
     @Override
@@ -79,9 +80,9 @@ public class Login extends AppCompatActivity {
 
         if(gp.VaidateExistsKey("NombreUsuario"))
         {
-            /*System.out.println("Entre!");
+            System.out.println("Entre!");
             Intent intent = new Intent(this, cl.ryc.forfimi.Menu.class);
-            startActivity(intent);*/
+            startActivity(intent);
 
         }
         else {
@@ -110,6 +111,7 @@ public class Login extends AppCompatActivity {
 
                                     // Application code
                                     try {
+                                        FacebookId=object.getString("id");
                                         String email = object.getString("email");
                                         String Nombre = object.getString("name").substring(0, object.getString("name").indexOf(" "));
                                         String Apellido = object.getString("name").substring(object.getString("name").indexOf(" ") + 1, object.getString("name").length());
@@ -275,6 +277,10 @@ public class Login extends AppCompatActivity {
             gp.setGlobalPersist("NombreUsuario",lu.getNombre());
             gp.setGlobalPersist("IdUsuario",""+lu.getIdUsuario());
             gp.setGlobalPersist("TipoPerfil",""+lu.getPerfil());
+            if(!FacebookId.equals(""))
+            {
+                gp.setGlobalPersist("FacebookID",FacebookId);
+            }
             Intent intent = new Intent(c.getApplicationContext(), cl.ryc.forfimi.Menu.class);
             c.startActivity(intent);
         }
