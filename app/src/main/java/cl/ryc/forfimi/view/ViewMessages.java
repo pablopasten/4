@@ -43,6 +43,7 @@ public class ViewMessages {
         HashMap<String,Object> value,valu,val,vals,va,vls,v;
         int [] controles = new int []{R.id.txtContenido,R.id.iconoRed};
         String [] keys = new String [] {"sKeyTexto","sKeyImagen"};
+        
 
 
         for(int cont=0; cont<n.size();cont++)
@@ -54,7 +55,7 @@ public class ViewMessages {
 
 
             value.put("sKeyTexto", n.get(cont).getComentario());
-            if(n.get(cont).getId_red_social()==1) {
+           if(n.get(cont).getId_red_social()==1) {
                 value.put("sKeyImagen", R.drawable.facebook);
             }
             else if (n.get(cont).getId_red_social()==2){
@@ -76,7 +77,7 @@ public class ViewMessages {
         Positivos=p;
         SimpleAdapter sa=null;
 
-        List<HashMap<String, Object>> Values = new ArrayList<HashMap<String, Object>>();
+        /*List<HashMap<String, Object>> Values = new ArrayList<HashMap<String, Object>>();
         HashMap<String,Object> value,valu,val,vals,va,vls,v;
         int [] controles = new int []{R.id.txtContenido ,R.id.iconoRed};
         String [] keys = new String [] {"sKeyTexto","sKeyImagen"};
@@ -101,7 +102,7 @@ public class ViewMessages {
 
         }
 
-        sa=new SimpleAdapter(c, Values, R.layout.controlespositivos, keys, controles);
+        sa=new SimpleAdapter(c, Values, R.layout.controlespositivos, keys, controles);*/
         return sa;
     }
 

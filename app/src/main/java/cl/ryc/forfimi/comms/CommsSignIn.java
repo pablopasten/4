@@ -12,6 +12,7 @@ import cl.ryc.forfimi.Login;
 import cl.ryc.forfimi.Sigin;
 import cl.ryc.forfimi.error.ErrorHandler;
 import cl.ryc.forfimi.helpers.DataFromServer;
+import cl.ryc.forfimi.helpers.GlobalPersist;
 import cl.ryc.forfimi.helpers.Parametros;
 
 /**
@@ -28,6 +29,7 @@ public class CommsSignIn extends AsyncTask{
     Parametros parametro;
     ErrorHandler eh;
     int Proviene;
+    GlobalPersist gp;
 
     int Error;
 
@@ -45,6 +47,7 @@ public class CommsSignIn extends AsyncTask{
         this.Password=PSW;
         this.Twitter=TWT;
         this.Proviene=prov;
+        gp=GlobalPersist.getInstance(con);
 
         if(Nombre2.equals(""))
         {
@@ -67,7 +70,7 @@ public class CommsSignIn extends AsyncTask{
 
         String URL=parametro.getHOSTURL()+parametro.getPORT()+parametro.getAPI()+parametro.getServicioCreaUSuario()+"nombre1="+Nombre1.toString()+";nombre2="+Nombre2.toString()+
                 ";apellido1="+Apellido1.toString()+";apellido2="+Apellido2.toString()+";correo="+Mail.toString()+";contraseña="+Password.toString()+
-                ";twitter="+Twitter.toString();
+                ";twitter="+Twitter.toString()+";keyMovil="+gp.getGlobalPersist("IDGCM");
 
         System.out.println(URL);
         result=dfs.GetDataFromServer(URL, 1);

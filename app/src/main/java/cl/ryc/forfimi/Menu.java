@@ -71,6 +71,8 @@ public class Menu extends AppCompatActivity{
         edtNombre=(TextView) findViewById(R.id.edtNombreUsuario);
         edtNombre.setText("Bienvenido " + gp.getGlobalPersist("NombreUsuario").toUpperCase());
         gv=(GridView) findViewById(R.id.grilla);
+
+        System.out.println("hoooooooooooooooooooooooolaaa");
         gv.setAdapter(vm.toListView());
         gv.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
@@ -85,7 +87,7 @@ public class Menu extends AppCompatActivity{
                     }
                     break;
                     case 1: {
-                        a = new Intent(c.getApplicationContext(), cl.ryc.forfimi.Menu.class);
+                        a = new Intent(c.getApplicationContext(), cl.ryc.forfimi.Perfil.class);
                         startActivity(a);
                     }
                     break;
@@ -120,7 +122,7 @@ public class Menu extends AppCompatActivity{
         }
         else
         {
-            imv.setImageBitmap(getFacebookProfilePicture("1214935767"));
+            //imv.setImageBitmap(getFacebookProfilePicture("1214935767"));
         }
     }
 
@@ -162,6 +164,7 @@ public class Menu extends AppCompatActivity{
         canvas.drawBitmap(bitmap, rect, rect, paint);
 
         bitmap.recycle();
+
 
         return output;
     }

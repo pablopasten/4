@@ -24,7 +24,7 @@ public class ViewMenu {
 
     public SimpleAdapter toListView ()
     {
-
+        System.out.println("Armando Lista");
 
         SimpleAdapter sa=null;
 
@@ -41,32 +41,34 @@ public class ViewMenu {
 
 
         value.put("sKeyTexto","Mensajes");
-        value.put("sKeyFondo", R.drawable.alerta);
+        value.put("sKeyFondo", R.drawable.ic_forum_black_36dp);
         Values.add(value);
 
         valu = new HashMap<String,Object>();
         valu.put("sKeyTexto", "Perfil");
-        valu.put("sKeyFondo", R.drawable.usuario);
+        valu.put("sKeyFondo", R.drawable.ic_face_black_36dp);
         Values.add(valu);
 
         val = new HashMap<String,Object>();
         val.put("sKeyTexto", "Historial");
-        val.put("sKeyFondo", R.drawable.historial);
+        val.put("sKeyFondo", R.drawable.ic_restore_black_36dp);
         Values.add(val);
 
         vls = new HashMap<String,Object>();
         vls.put("sKeyTexto", "Noticias");
-        vls.put("sKeyFondo", R.drawable.noticias);
+        vls.put("sKeyFondo", R.drawable.ic_import_contacts_black_36dp);
         Values.add(vls);
 
         v = new HashMap<String,Object>();
         v.put("sKeyTexto", "Contacto");
-        v.put("sKeyFondo", R.drawable.mail);
+        v.put("sKeyFondo", R.drawable.ic_email_black_36dp);
         Values.add(v);
 
 
 
         sa=new SimpleAdapter(c, Values, R.layout.gridview_layout, keys, controles);
+
+        System.out.println("Saliendo lista!");
         return sa;
     }
 

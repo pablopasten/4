@@ -24,6 +24,7 @@ public class Parametros {
     private final String ServicioLogin="login;";
     private final String ServicioHistorial="getHistorial";
     private final String ServicioCreaUSuario="setUser;";
+    private final String ServicioUsuario="getUser;";
 
 
 
@@ -88,6 +89,8 @@ public class Parametros {
         return ServicioCreaUSuario;
     }
 
-
+    public String getServicioUsuario() {
+        return ServicioUsuario;
+    }
 }
 
