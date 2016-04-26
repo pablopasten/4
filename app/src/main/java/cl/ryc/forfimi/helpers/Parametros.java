@@ -25,6 +25,9 @@ public class Parametros {
     private final String ServicioHistorial="getHistorial";
     private final String ServicioCreaUSuario="setUser;";
     private final String ServicioUsuario="getUser;";
+    private final String ServicioModificarUsuario="modUser;";
+    private final String ServicioEnviaPalabras="setWord;";
+    private final String ServicioSendPassword="SendPass;";
 
 
 
@@ -79,6 +82,7 @@ public class Parametros {
     public String getFTPPath() {
         return FTPPath;
     };
+
     public String getServicioLogin() {return ServicioLogin;};
 
     public String getServicioHistorial() {
@@ -91,6 +95,18 @@ public class Parametros {
 
     public String getServicioUsuario() {
         return ServicioUsuario;
+    }
+
+    public String getServicioModificarUsuario() {
+        return ServicioModificarUsuario;
+    }
+
+    public String getServicioEnviaPalabras() {
+        return ServicioEnviaPalabras;
+    }
+
+    public String getServicioSendPassword() {
+        return ServicioSendPassword;
     }
 }
 

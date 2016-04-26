@@ -63,17 +63,21 @@ public class Login extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         GlobalPersist gp= GlobalPersist.getInstance(this);
+        getControls();
 
         /***************************************************
-         * Registramos el dispositivo en GCM
+         * Registramos el dispositivo en GCM sòlo si no existe previamente
          */
 
-        GetIDCloudMessage gidgcm= new GetIDCloudMessage(this);
-        gidgcm.execute("");
+       if  (!gp.VaidateExistsKey("IDGCM")) {
+
+           GetIDCloudMessage gidgcm = new GetIDCloudMessage(this);
+           gidgcm.execute("");
+       }
 
 
         /**************************************************
-         * Validamos que el usuario si el usaurio ya esta logueado anteriormente
+         * Validamos si el usaurio ya esta logueado anteriormente
          *
          ************************************************/
 
@@ -111,7 +115,7 @@ public class Login extends AppCompatActivity {
 
                                     // Application code
                                     try {
-                                        FacebookId=object.getString("id");
+                                        FacebookId = object.getString("id");
                                         String email = object.getString("email");
                                         String Nombre = object.getString("name").substring(0, object.getString("name").indexOf(" "));
                                         String Apellido = object.getString("name").substring(object.getString("name").indexOf(" ") + 1, object.getString("name").length());
@@ -166,17 +170,7 @@ public class Login extends AppCompatActivity {
              **************************************************/
 
 
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            getControls();
-            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
+
         }
     }
 
@@ -214,6 +208,24 @@ public class Login extends AppCompatActivity {
 
         btnIngreso.setOnClickListener(onIngresar);
         btnRegistro.setOnClickListener(onRegistro);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!Usuario.getText().toString().equals("")) {
+                    SolicitudContraseña(Usuario.getText().toString());
+                    Snackbar.make(view, "Enviaremos tu contraseña olvidada al correo registrado", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+                else{
+                    Snackbar.make(view, "Ingresa tu usuario para restaurar tu contraseña", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            }
+        });
 
     }
 
@@ -304,6 +316,12 @@ public class Login extends AppCompatActivity {
     }
 
     public static void BackAffterGCM(){
+
+    }
+
+
+    public void SolicitudContraseña(String email)
+    {
 
     }
 }

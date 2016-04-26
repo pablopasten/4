@@ -106,6 +106,23 @@ public class Perfil extends AppCompatActivity {
             Password.setText(user.getPassword());
             Empresa1.setText(user.getEmpresa1());
             Empresa2.setText(user.getEmpresa2());
+            for(int cont=0;cont<user.getRedes().size();cont++){
+                if(user.getRedes().get(cont).getIdRedSocial()==1){
+                    Twitter.setText(Twitter.getText().toString()+" "+user.getRedes().get(cont).getNombreUsuarioRedSocial());
+                }
+                else if(user.getRedes().get(cont).getIdRedSocial()==3)
+                {
+                    Instagram.setText(Instagram.getText().toString()+" "+user.getRedes().get(cont).getNombreUsuarioRedSocial());
+                }
+            }
+
+
+            for(int conta=0;conta<user.getPalabras().size();conta++) {
+
+                Palabras.setText(Palabras.getText().toString() + " " + user.getPalabras().get(conta));
+            }
+
+
 
 
         }

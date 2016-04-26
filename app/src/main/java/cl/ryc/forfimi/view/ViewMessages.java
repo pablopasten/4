@@ -43,7 +43,7 @@ public class ViewMessages {
         HashMap<String,Object> value,valu,val,vals,va,vls,v;
         int [] controles = new int []{R.id.txtContenido,R.id.iconoRed};
         String [] keys = new String [] {"sKeyTexto","sKeyImagen"};
-        
+
 
 
         for(int cont=0; cont<n.size();cont++)

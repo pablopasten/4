@@ -47,18 +47,24 @@
             android:hint="Password" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="170dp"
+            android:layout_height="20dp"
             android:text="Ingresar"
             android:id="@+id/button"
-            android:layout_gravity="center" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="#04B486"
+            android:textColor="#ffffff"/>
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="170dp"
+            android:layout_height="20dp"
             android:text="Crear Usuario"
             android:id="@+id/btnRegistro"
-            android:background="#ffffff"
-            android:layout_gravity="center" />
+            android:background="#848484"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp" />
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_button"
             android:layout_width="wrap_content"

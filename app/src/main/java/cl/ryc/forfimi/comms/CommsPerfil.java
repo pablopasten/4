@@ -68,7 +68,7 @@ public class CommsPerfil extends AsyncTask {
                     user.setApellido2(json_data.getString("apell2"));
                     user.setEmpresa1(json_data.getString("emp1"));
                     user.setEmpresa2(json_data.getString("emp2"));
-                    user.setPassword(json_data.getString("contrasena"));
+                    user.setPassword(json_data.getString("contraseÃ±a"));
 
                     JSONArray redes= json_data.getJSONArray("rs");
 
@@ -84,6 +84,21 @@ public class CommsPerfil extends AsyncTask {
 
 
                     }
+
+
+                    JSONArray words= json_data.getJSONArray("palabras");
+
+                    for (int conta=0;conta<words.length();conta++){
+                        JSONObject word= words.getJSONObject(conta);
+                        System.out.println(word.getString("palabra"));
+                        user.setPalabras(word.getString("palabra"));
+
+
+                    }
+
+
+
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
