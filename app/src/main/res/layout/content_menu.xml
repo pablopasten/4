@@ -11,49 +11,73 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="cl.ryc.forfimi.Menu"
     tools:showIn="@layout/menu_activity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#22a78c">
 
-
-    <LinearLayout
+    <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/fondo">
+        >
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="190dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/notebookweb">
+            </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView2"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
             android:src="@drawable/person"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Medium Text"
             android:id="@+id/edtNombreUsuario"
-            android:textColor="#000000" />
+            android:textColor="#ffffff"
+            android:layout_gravity="right"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageView2"
+            android:layout_toEndOf="@+id/imageView2"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"/>
+        </RelativeLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
 
         <GridView
             android:layout_width="wrap_content"
-            android:layout_height="270dp"
+            android:layout_height="200dp"
             android:id="@+id/grilla"
             android:columnWidth="100dp"
             android:horizontalSpacing="5dp"
             android:numColumns="auto_fit"
             android:padding="2dp"
-            android:verticalSpacing="2dp" />
+            android:verticalSpacing="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"/>
 
     </LinearLayout>
 

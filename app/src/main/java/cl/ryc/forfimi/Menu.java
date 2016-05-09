@@ -52,8 +52,9 @@ public class Menu extends AppCompatActivity{
             StrictMode.setThreadPolicy(policy);
         }
         setContentView(R.layout.menu_activity);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setLogo(R.drawable.teclasverde);*/
         gp= GlobalPersist.getInstance(this);
         getControls();
 
@@ -97,12 +98,12 @@ public class Menu extends AppCompatActivity{
                     }
                     break;
                     case 3: {
-                        a = new Intent(c.getApplicationContext(), cl.ryc.forfimi.Menu.class);
+                        a = new Intent(c.getApplicationContext(), cl.ryc.forfimi.Noticias.class);
                         startActivity(a);
                     }
                     break;
                     case 4: {
-                        a = new Intent(c.getApplicationContext(), cl.ryc.forfimi.Menu.class);
+                        a = new Intent(c.getApplicationContext(), cl.ryc.forfimi.Contacto.class);
                         startActivity(a);
                     }
                     break;

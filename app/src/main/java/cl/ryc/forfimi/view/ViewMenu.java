@@ -25,6 +25,7 @@ public class ViewMenu {
     public SimpleAdapter toListView ()
     {
         System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
 
         SimpleAdapter sa=null;
 
@@ -37,10 +38,11 @@ public class ViewMenu {
         value = new HashMap<String,Object>();
 
 
+        System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
 
-
-
-        value.put("sKeyTexto","Mensajes");
+        value.put("sKeyTexto", "Mensajes");
         value.put("sKeyFondo", R.drawable.ic_forum_black_36dp);
         Values.add(value);
 
@@ -58,7 +60,7 @@ public class ViewMenu {
         vls.put("sKeyTexto", "Noticias");
         vls.put("sKeyFondo", R.drawable.ic_import_contacts_black_36dp);
         Values.add(vls);
-
+        System.out.println("Armando Lista");
         v = new HashMap<String,Object>();
         v.put("sKeyTexto", "Contacto");
         v.put("sKeyFondo", R.drawable.ic_email_black_36dp);

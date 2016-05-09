@@ -157,6 +157,26 @@ public class CommsEdicionPerfil extends AsyncTask {
     public void EditRRSSUSer(){
 
         //Acà Vamos a enviar las redes sociales del usuario
+        if(!this.INSTA.equals("")){
+            String Url=this.params.getHOSTURL()+this.params.getPORT()+this.params.getAPI()+this.params.getEditRSS()+"usuario="+this.INSTA+
+                    ";id_usuario="+this.gp.getGlobalPersist("IdUsuario")+";id_red=3";
+
+            DataFromServer dfs= new DataFromServer();
+
+            System.out.println(Url);
+            result=dfs.GetDataFromServer(Url,1);
+        }
+
+
+        if(!this.TWT.equals("")){
+            String Url=this.params.getHOSTURL()+this.params.getPORT()+this.params.getAPI()+this.params.getEditRSS()+"usuario="+this.TWT+
+                    ";id_usuario="+this.gp.getGlobalPersist("IdUsuario")+";id_red=2";
+
+            DataFromServer dfs= new DataFromServer();
+
+            System.out.println(Url);
+            result=dfs.GetDataFromServer(Url,1);
+        }
     }
 
 

@@ -39,8 +39,9 @@ public class Perfil extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_activity);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+       /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setLogo(R.mipmap.ic_launcher);*/
         this.c=this;
         getControls();
         pd= new ProgressDialog(c);
@@ -55,6 +56,7 @@ public class Perfil extends AppCompatActivity {
 
     public void getControls()
     {
+        System.out.println("aaaaQUIIIIIIII");
         Password=(EditText) findViewById(R.id.edtPSW);
         Empresa1=(EditText) findViewById(R.id.edtEActual);
         Empresa2=(EditText) findViewById(R.id.edtEAnterior);

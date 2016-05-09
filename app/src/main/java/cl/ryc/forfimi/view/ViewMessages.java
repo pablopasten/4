@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.widget.SimpleAdapter;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,10 +53,19 @@ public class ViewMessages {
             value = new HashMap<String,Object>();
 
 
+            byte ptext[] = new byte[0];
+            try {
+                ptext = n.get(cont).getComentario().getBytes("ISO-8859-1");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            try {
+                String coment = new String(ptext, "UTF-8");
+                value.put("sKeyTexto",coment);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
 
-
-
-            value.put("sKeyTexto", n.get(cont).getComentario());
            if(n.get(cont).getId_red_social()==1) {
                 value.put("sKeyImagen", R.drawable.facebook);
             }

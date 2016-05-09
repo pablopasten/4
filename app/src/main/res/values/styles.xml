@@ -16,5 +16,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <style name='editextColor' >
+        <item name="colorControlNormal">#22a78c</item>
+    </style>
 </resources>

@@ -7,31 +7,21 @@
     android:paddingBottom="0dp"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
-    android:paddingTop="0dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="cl.ryc.forfimi.Menu"
     tools:showIn="@layout/perfil_activity"
     android:orientation="vertical"
-    android:background="#BDBDBD">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/fondo"
-        >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/PersonPicture"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/person"
-            />
-    </LinearLayout>
+    android:background="#ffffff">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="left"
+        android:src="@drawable/logo"
+        android:contentDescription="logo"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="30dp"/>
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -45,10 +35,10 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:paddingTop="15dp"
-                android:background="#ffffff"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="15dp"
+                android:background="@drawable/border"
 
                 >
 
@@ -60,7 +50,10 @@
                         android:id="@+id/edtPSW"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Password" />
+                        android:hint="Password"
+                        android:textColorHint="#FFFFFF"
+                        android:theme="@style/editextColor"
+                        android:textColor="#ffffff"/>
 
                     <ImageButton
                         android:id="@+id/btnMostrar"
@@ -79,38 +72,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edtEActual"
-                    android:hint="Empresa Actual"/>
+                    android:hint="Empresa Actual"
+                    android:textColorHint="#FFFFFF"
+                    android:theme="@style/editextColor"
+                    android:textColor="#ffffff"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edtEAnterior"
-                    android:hint="Empresa Anterior"/>
+                    android:hint="Empresa Anterior"
+                    android:textColorHint="#FFFFFF"
+                    android:theme="@style/editextColor"
+                    android:textColor="#ffffff"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edtPalabras"
-                    android:hint="Palabras de Busqueda"/>
+                    android:hint="Palabras de Busqueda"
+                    android:textColorHint="#FFFFFF"
+                    android:theme="@style/editextColor"
+                    android:textColor="#ffffff"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edtTWT"
                     android:hint="Twitter"
-                    android:drawableLeft="@drawable/twittercirc"/>
+                    android:drawableLeft="@drawable/twittercirc"
+                    android:textColorHint="#FFFFFF"
+                    android:theme="@style/editextColor"
+                    android:textColor="#ffffff"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edtInsta"
                     android:hint="Instagram"
-                    android:drawableLeft="@drawable/instagramcirc"/>
+                    android:drawableLeft="@drawable/instagramcirc"
+                    android:textColorHint="#FFFFFF"
+                    android:theme="@style/editextColor"
+                    android:textColor="#ffffff"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Modificar mis datos"
                     android:id="@+id/btnModificar"
-                    android:background="#ffffff"
+                    android:background="#22a78c"
                     android:layout_marginTop="25dp"
                     android:layout_marginBottom="25dp"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
 
 
             </LinearLayout>

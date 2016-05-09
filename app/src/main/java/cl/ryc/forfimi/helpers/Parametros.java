@@ -28,6 +28,8 @@ public class Parametros {
     private final String ServicioModificarUsuario="modUser;";
     private final String ServicioEnviaPalabras="setWord;";
     private final String ServicioSendPassword="SendPass;";
+    private final String ServicioNoticias="getNoticias";
+    private final String EditRSS="insertRedes;";
 
 
 
@@ -107,6 +109,14 @@ public class Parametros {
 
     public String getServicioSendPassword() {
         return ServicioSendPassword;
+    }
+
+    public String getServicioNoticias() {
+        return ServicioNoticias;
+    }
+
+    public String getEditRSS() {
+        return EditRSS;
     }
 }
 

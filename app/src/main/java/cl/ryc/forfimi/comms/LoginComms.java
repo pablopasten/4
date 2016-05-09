@@ -3,6 +3,7 @@ package cl.ryc.forfimi.comms;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.provider.Settings;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,6 +13,7 @@ import cl.ryc.forfimi.Login;
 import cl.ryc.forfimi.Sigin;
 import cl.ryc.forfimi.entities.LoginUsuario;
 import cl.ryc.forfimi.helpers.DataFromServer;
+import cl.ryc.forfimi.helpers.GlobalPersist;
 import cl.ryc.forfimi.helpers.Parametros;
 import cl.ryc.forfimi.error.ErrorHandler;
 
@@ -28,6 +30,7 @@ public class LoginComms extends AsyncTask {
     LoginUsuario lu;
     ErrorHandler eh;
     int Proviene;
+    String Email;
 
     public LoginComms(Context con, ProgressDialog p,String User,String Password,int Prov){
         this.c=con;
@@ -35,6 +38,7 @@ public class LoginComms extends AsyncTask {
         this.Usuario=User;
         this.Contraseña=Password;
         eh=ErrorHandler.getInstance();
+        this.Email=User;
         Proviene=Prov;
 
     }
@@ -72,6 +76,7 @@ public class LoginComms extends AsyncTask {
 
 
 
+
                     //ViewsHelper.setStatusComms(NoError);
 
                 }
@@ -92,12 +97,18 @@ public class LoginComms extends AsyncTask {
     {
         // TODO Auto-generated method stub
         super.onPostExecute(result);
+        GlobalPersist gp= GlobalPersist.getInstance(c);
+
 
         if(Proviene==0) {
+            gp.setGlobalPersist("EmailUsuario", this.Email);
             Login.onBack(this.lu);
+
         }
         else{
+            gp.setGlobalPersist("EmailUsuario",this.Email);
             Sigin.onBackCommsLogIn(this.lu);
+
         }
         pd.dismiss();
     }

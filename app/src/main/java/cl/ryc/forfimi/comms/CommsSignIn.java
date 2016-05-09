@@ -31,6 +31,7 @@ public class CommsSignIn extends AsyncTask{
     int Proviene;
     GlobalPersist gp;
 
+
     int Error;
 
     public CommsSignIn(ProgressDialog p, Context con, String N1,String N2, String A1,
@@ -115,6 +116,7 @@ public class CommsSignIn extends AsyncTask{
             if(Error==0) {
 
                 LoginComms cl = new LoginComms(c, pd, Mail.toString(), Password.toString(), 0);
+
                 cl.execute("");
             }
             else{
