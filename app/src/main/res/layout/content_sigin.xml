@@ -46,6 +46,7 @@
             android:singleLine="true"
             android:nextFocusForward="@+id/edtNombre2"
             android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"
             android:theme="@style/editextColor"
              />
         <EditText
@@ -57,6 +58,7 @@
             android:singleLine="true"
             android:nextFocusForward="@+id/edtApellido1"
             android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"
             android:theme="@style/editextColor"
             />
         <EditText
@@ -68,6 +70,7 @@
             android:singleLine="true"
             android:nextFocusForward="@+id/edtApellido2"
             android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"
             android:theme="@style/editextColor"/>
         <EditText
             android:layout_width="match_parent"
@@ -78,6 +81,7 @@
             android:singleLine="true"
             android:nextFocusForward="@+id/edtTwitter"
             android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"
             android:theme="@style/editextColor"/>
 
         <EditText
@@ -89,6 +93,7 @@
             android:singleLine="true"
             android:nextFocusForward="@+id/edtMail"
             android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"
             android:theme="@style/editextColor"/>
         <EditText
             android:layout_width="match_parent"
@@ -99,6 +104,7 @@
             android:singleLine="true"
             android:nextFocusForward="@+id/edtPassword"
             android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"
             android:theme="@style/editextColor"/>
         <EditText
             android:layout_width="match_parent"
@@ -110,6 +116,7 @@
             android:singleLine="true"
             android:nextFocusForward="@+id/btnUsuario"
             android:textColorHint="#FFFFFF"
+            android:textColor="#ffffff"
             android:theme="@style/editextColor"/>
         <Button
             android:layout_width="200dp"

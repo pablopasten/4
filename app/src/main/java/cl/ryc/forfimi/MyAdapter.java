@@ -36,6 +36,7 @@ public class MyAdapter extends SimpleAdapter {
         System.out.println("aaaaQUIIIIIIII");
         String url = ((Map)getItem(position)).get("skeyImagen").toString();
         // do Picasso
+        System.out.println(url);
         Picasso.with(v.getContext()).load(url).into(img);
 
         // return the view

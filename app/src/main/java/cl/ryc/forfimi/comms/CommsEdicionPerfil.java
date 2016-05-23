@@ -61,13 +61,12 @@ public class CommsEdicionPerfil extends AsyncTask {
 
         if(EditInfoUser()){
 
-            if(SendWordsToServer(Words)) {
+            SendWordsToServer(Words);
 
-                EditRRSSUSer();
-            }
-            else{
-                ErrorGeneral=false;
-            }
+            EditRRSSUSer();
+
+
+
         }
         else{
             ErrorGeneral=false;
@@ -158,24 +157,26 @@ public class CommsEdicionPerfil extends AsyncTask {
 
         //Acà Vamos a enviar las redes sociales del usuario
         if(!this.INSTA.equals("")){
-            String Url=this.params.getHOSTURL()+this.params.getPORT()+this.params.getAPI()+this.params.getEditRSS()+"usuario="+this.INSTA+
+            String Url=this.params.getHOSTURL()+this.params.getPORT()+this.params.getAPI()+this.params.getEditRSS()+"n_usuario_red="+this.INSTA+
                     ";id_usuario="+this.gp.getGlobalPersist("IdUsuario")+";id_red=3";
 
+            System.out.println(Url);
             DataFromServer dfs= new DataFromServer();
 
             System.out.println(Url);
-            result=dfs.GetDataFromServer(Url,1);
+            result=dfs.GetDataFromServer(Url,0);
         }
 
 
         if(!this.TWT.equals("")){
-            String Url=this.params.getHOSTURL()+this.params.getPORT()+this.params.getAPI()+this.params.getEditRSS()+"usuario="+this.TWT+
-                    ";id_usuario="+this.gp.getGlobalPersist("IdUsuario")+";id_red=2";
 
+            String Url=this.params.getHOSTURL()+this.params.getPORT()+this.params.getAPI()+this.params.getEditRSS()+"n_usuario_red="+this.TWT.trim()+
+                    ";id_usuario="+this.gp.getGlobalPersist("IdUsuario")+";id_red=2";
+            System.out.println(Url);
             DataFromServer dfs= new DataFromServer();
 
             System.out.println(Url);
-            result=dfs.GetDataFromServer(Url,1);
+            result=dfs.GetDataFromServer(Url,0);
         }
     }
 

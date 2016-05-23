@@ -25,6 +25,7 @@ import com.androidplot.xy.XYSeries;
 import java.util.Arrays;
 import java.util.List;
 
+import cl.ryc.forfimi.comms.CommsChart;
 import cl.ryc.forfimi.entities.Msg;
 import cl.ryc.forfimi.helpers.GlobalPersist;
 import cl.ryc.forfimi.view.ViewMessages;
@@ -38,35 +39,24 @@ public class Messages extends AppCompatActivity {
     ProgressDialog pd;
     static Context c;
     static ViewMessages vm;
-    private XYPlot plot;
-    Number[] series1Numbers = {1, 4, 2, 8, 4, 16, 8, 32, 16, 64};
-    Number[] series2Numbers = {5, 2, 10, 5, 20, 10, 40, 20, 80, 40};
+    private static XYPlot plot;
+    //static Number[] series1Numbers= new Number[7];
+    static Number[] seri ;//= {1,2,3,3,3,3,3};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
         this.c=this;
-        getControls();
-
-    }
-
-    public void getControls(){
-
-        ProgressDialog pd;
-
-    System.out.println("test");
-        plot = (XYPlot) findViewById(R.id.plot);
-
         lvNegativos=(ListView) findViewById(R.id.lvNegativos);
 
-        pd= new ProgressDialog(c);
-        GlobalPersist gp= GlobalPersist.getInstance(c);
-        createChart();
-        vm= new ViewMessages(this.c,pd, gp.getGlobalPersist("IdUsuario"));
+        CommsChart cch=new CommsChart(c,this);
+        cch.execute("");
 
 
     }
+
 
 
     public static void onAsyncBack(List<Msg> Positivos, List<Msg> Negativos, int Error){
@@ -85,7 +75,13 @@ public class Messages extends AppCompatActivity {
 
     }
 
-    public void createChart(){
+    public  void createChart(Number[] series1Numbers){
+        plot = (XYPlot) findViewById(R.id.plot);
+        System.out.println("******************************************");
+        /*for (int cont=0;cont<7;cont++){
+
+            System.out.println(series1Numbers[cont]);
+        }*/
         XYSeries series1 = new SimpleXYSeries(Arrays.asList(series1Numbers),
                 SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "");
        plot.getBackgroundPaint().setColor(Color.WHITE);
@@ -108,7 +104,7 @@ public class Messages extends AppCompatActivity {
         // and configure them from xml:
         LineAndPointFormatter series1Format = new LineAndPointFormatter();
         series1Format.setPointLabelFormatter(new PointLabelFormatter());
-        series1Format.configure(getApplicationContext(),
+        series1Format.configure(c,
                 R.xml.line_point_formatter_with_labels);
 
        /* LineAndPointFormatter series2Format = new LineAndPointFormatter();
@@ -127,7 +123,7 @@ public class Messages extends AppCompatActivity {
         // just for fun, add some smoothing to the lines:
         // see: http://androidplot.com/smooth-curves-and-androidplot/
         series1Format.setInterpolationParams(
-                new CatmullRomInterpolator.Params(5, CatmullRomInterpolator.Type.Centripetal));
+                new CatmullRomInterpolator.Params(7, CatmullRomInterpolator.Type.Centripetal));
 
         /*series2Format.setInterpolationParams(
                 new CatmullRomInterpolator.Params(10, CatmullRomInterpolator.Type.Centripetal));*/
@@ -143,5 +139,28 @@ public class Messages extends AppCompatActivity {
         plot.getGraphWidget().setDomainLabelOrientation(-100);
 
     }
+
+    public void  backfromGetData(Number[] ser){
+
+
+       /* System.out.println("Voy a Imprimir el resultado2");
+        for (int cont=0;cont<7;cont++){
+            System.out.println(ser[cont]);
+        }*/
+        seri=ser;
+        ProgressDialog pd;
+
+        System.out.println("test");
+
+        pd= new ProgressDialog(c);
+        GlobalPersist gp= GlobalPersist.getInstance(c);
+
+        createChart(seri);
+
+        vm= new ViewMessages(this.c,pd, gp.getGlobalPersist("IdUsuario"));
+
+    }
+
+
 
 }

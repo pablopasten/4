@@ -31,8 +31,9 @@ public class LoginComms extends AsyncTask {
     ErrorHandler eh;
     int Proviene;
     String Email;
+    int isFB;
 
-    public LoginComms(Context con, ProgressDialog p,String User,String Password,int Prov){
+    public LoginComms(Context con, ProgressDialog p,String User,String Password,int Prov, int isFacebook){
         this.c=con;
         this.pd=p;
         this.Usuario=User;
@@ -40,15 +41,22 @@ public class LoginComms extends AsyncTask {
         eh=ErrorHandler.getInstance();
         this.Email=User;
         Proviene=Prov;
+        isFB=isFacebook;
 
     }
 
     @Override
     protected Object doInBackground(Object[] params) {
          DataFromServer dfs= new DataFromServer();
+        String URL;
          parametro= Parametros.getInstance();
-         String URL=parametro.getHOSTURL()+parametro.getPORT()+parametro.getAPI()+parametro.getServicioLogin()+"correo="+this.Usuario+
-                 ";pass="+this.Contraseña;
+        if(isFB==1){
+            URL=parametro.getHOSTURL() + parametro.getPORT() + parametro.getAPI() + parametro.getLoginFacebook() + "correo=" + this.Usuario;
+
+        }else {
+             URL = parametro.getHOSTURL() + parametro.getPORT() + parametro.getAPI() + parametro.getServicioLogin() + "correo=" + this.Usuario +
+                    ";pass=" + this.Contraseña;
+        }
          System.out.println(URL);
          result=dfs.GetDataFromServer(URL,1);
 

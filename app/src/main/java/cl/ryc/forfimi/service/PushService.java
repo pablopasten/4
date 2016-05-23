@@ -125,10 +125,11 @@ public class PushService extends IntentService
         this.startActivity(notIntent);
         NotificationCompat.Builder mBuilders =
                     new NotificationCompat.Builder(this)
-                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setSmallIcon(R.drawable.logo)
                             .setContentTitle("4Fimi ")
-                            .setContentText("Prueba")
+                            .setContentText("Tienes nuevos mensajes en redes sociales")
                             .setUsesChronometer(true);
+
 
 
         notIntent.putExtra("ContentMessage",GlobalPersist.getGlobalPersist("ContentMessage"));

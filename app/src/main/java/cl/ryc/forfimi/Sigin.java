@@ -72,10 +72,18 @@ public class Sigin extends AppCompatActivity {
                     case 0:{
                         pd= new ProgressDialog(c);
                         pd.setMessage("Estamos creando tu cuenta.");
+                        if(!Twitter.getText().equals("")){
                         CommsSignIn cms= new CommsSignIn(pd,c,Nombre1.getText().toString(),Nombre2.getText().toString(),Apellido1.getText().toString(),
                         Apellido2.getText().toString(),Mail.getText().toString(),Password.getText().toString(),Twitter.getText().toString(),1);
 
                         cms.execute("");
+                        }
+                        else{
+                            CommsSignIn cms= new CommsSignIn(pd,c,Nombre1.getText().toString(),Nombre2.getText().toString(),Apellido1.getText().toString(),
+                                    Apellido2.getText().toString(),Mail.getText().toString(),Password.getText().toString(),"sin_info",1);
+
+                            cms.execute("");
+                        }
                     }
                     break;
                     case 1:{
@@ -107,16 +115,21 @@ public class Sigin extends AppCompatActivity {
     public int ValidarCampos()
     {
         if(Mail.getText().toString().equals("")|| Password.getText().toString().equals("")||
-                Nombre1.getText().toString().equals("")||Apellido1.getText().toString().equals("")||
-                Twitter.getText().toString().equals("")){
+                Nombre1.getText().toString().equals("")||Apellido1.getText().toString().equals("")
+                ){
             return 1;
         }
         else if(!helper.validateEmail(Mail.getText().toString())){
             return 2;
         }
-        else if(!helper.UsuarioTwitter(Twitter.getText().toString())){
+        else if(!Twitter.getText().equals("")){
 
-            return 3;
+
+           if( !helper.UsuarioTwitter(Twitter.getText().toString())) {
+
+               return 3;
+           }
+
         }
 
         return 0;
@@ -129,7 +142,7 @@ public class Sigin extends AppCompatActivity {
         if (Estado==0){
 
             pd= new ProgressDialog(c);
-            LoginComms cl= new LoginComms(c,pd,Mail.getText().toString(),Password.getText().toString(),0);
+            LoginComms cl= new LoginComms(c,pd,Mail.getText().toString(),Password.getText().toString(),0,0);
             cl.execute("");
 
         }

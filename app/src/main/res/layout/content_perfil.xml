@@ -20,7 +20,7 @@
         android:layout_gravity="left"
         android:src="@drawable/logo"
         android:contentDescription="logo"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"/>
 
     <ScrollView
@@ -53,7 +53,7 @@
                         android:hint="Password"
                         android:textColorHint="#FFFFFF"
                         android:theme="@style/editextColor"
-                        android:textColor="#ffffff"/>
+                        android:textColor="#FFFFFF"/>
 
                     <ImageButton
                         android:id="@+id/btnMostrar"
@@ -75,7 +75,7 @@
                     android:hint="Empresa Actual"
                     android:textColorHint="#FFFFFF"
                     android:theme="@style/editextColor"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#FFFFFF"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                     android:hint="Empresa Anterior"
                     android:textColorHint="#FFFFFF"
                     android:theme="@style/editextColor"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#FFFFFF"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                     android:hint="Palabras de Busqueda"
                     android:textColorHint="#FFFFFF"
                     android:theme="@style/editextColor"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#FFFFFF"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                     android:drawableLeft="@drawable/twittercirc"
                     android:textColorHint="#FFFFFF"
                     android:theme="@style/editextColor"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#FFFFFF"/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -109,7 +109,18 @@
                     android:drawableLeft="@drawable/instagramcirc"
                     android:textColorHint="#FFFFFF"
                     android:theme="@style/editextColor"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#FFFFFF"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Modificar mis foto"
+                    android:id="@+id/btnModificarFoto"
+                    android:background="#22a78c"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

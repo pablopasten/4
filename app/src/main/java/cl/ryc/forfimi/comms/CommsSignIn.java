@@ -30,6 +30,7 @@ public class CommsSignIn extends AsyncTask{
     ErrorHandler eh;
     int Proviene;
     GlobalPersist gp;
+    String des_salida;
 
 
     int Error;
@@ -89,6 +90,9 @@ public class CommsSignIn extends AsyncTask{
                     json_data = this.result.getJSONObject(cont);
 
                     Error=json_data.getInt("cod_salida");
+                    des_salida=json_data.getString("des_salida");
+
+
 
 
 
@@ -115,12 +119,20 @@ public class CommsSignIn extends AsyncTask{
         else{
             if(Error==0) {
 
-                LoginComms cl = new LoginComms(c, pd, Mail.toString(), Password.toString(), 0);
+                LoginComms cl = new LoginComms(c, pd, Mail.toString(), Password.toString(), 1,0);
 
                 cl.execute("");
             }
             else{
-                Login.ErrorOnCreateUserWithFacebook();
+                if(des_salida.equals("ya existe!!") && this.Proviene==0)
+                {
+                    LoginComms cl = new LoginComms(c, pd, Mail.toString(), Password.toString(), 0,1);
+
+                    cl.execute("");
+                }
+                else {
+                    Login.ErrorOnCreateUserWithFacebook();
+                }
             }
 
         }

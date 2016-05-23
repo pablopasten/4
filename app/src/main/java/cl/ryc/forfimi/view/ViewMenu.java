@@ -41,6 +41,10 @@ public class ViewMenu {
         System.out.println("Armando Lista");
         System.out.println("Armando Lista");
         System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
+
 
         value.put("sKeyTexto", "Mensajes");
         value.put("sKeyFondo", R.drawable.ic_forum_black_36dp);

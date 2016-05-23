@@ -66,19 +66,20 @@ public class CommsPerfil extends AsyncTask {
                     user.setNombre2(json_data.getString("nom2"));
                     user.setApellido1(json_data.getString("apell1"));
                     user.setApellido2(json_data.getString("apell2"));
-                    user.setEmpresa1(json_data.getString("emp1"));
-                    user.setEmpresa2(json_data.getString("emp2"));
+                    user.setEmpresa1(json_data.getString("emp1").replace("_"," "));
+                    user.setEmpresa2(json_data.getString("emp2").replace("_"," "));
                     user.setPassword(json_data.getString("contraseÃ±a"));
 
                     JSONArray redes= json_data.getJSONArray("rs");
 
                     for (int conta=0;conta<redes.length();conta++){
-                        JSONObject red= redes.getJSONObject(cont);
+                        JSONObject red= redes.getJSONObject(conta);
 
                         RedSocial rs= new RedSocial();
 
                         rs.setIdRedSocial(red.getInt("id_red_social"));
-                        rs.setNombreUsuarioRedSocial(red.getString("n_usuario_red"));
+                        System.out.println(red.getString("n_usuario_red"));
+                                rs.setNombreUsuarioRedSocial(red.getString("n_usuario_red"));
 
                         user.setRedes(rs);
 

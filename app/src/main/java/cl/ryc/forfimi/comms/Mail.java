@@ -51,7 +51,7 @@ public class Mail extends javax.mail.Authenticator{
 
     private Multipart _multipart;
 
-    GlobalPersist gp;
+
     public Mail(String Contenido,Context c)
     {
         _host ="smtp.gmail.com"; // default smtp server
@@ -60,18 +60,13 @@ public class Mail extends javax.mail.Authenticator{
         _to=new String[1];
         _to[0]="no-reply@4fimi.com";
 
-        gp= GlobalPersist.getInstance(c);
-        gp.setGlobalPersist("EmailUsuario","pablopasten@gmail.com");
+        GlobalPersist gp= GlobalPersist.getInstance(c);
         _user = "no-reply@4fimi.com"; // username
-        _pass = "4fimi2016"; // password
-        System.out.println(gp.getGlobalPersist("EmailUsuario"));
-        _from = gp.getGlobalPersist("EmailUsuario"); // email sent from
+        _pass = "fimi2016"; // password
+        _from = "no-reply@4fimi.com"; // email sent from
         _subject = "Contacto desde Aplicacion Movil"; // email subject
 
-        _body="Tenemos el siguiente mensaje enviado desde la aplicaciòn móvil:\r\n" +
-                "El mail del usuario que envia el mensaje es: "+gp.getGlobalPersist("EmailUsuario")+
-                "\r\nEl nombre del usuario es: "+gp.getGlobalPersist("NombreUsuario")+
-                "\r\nEl cuerpo del mensaje es:\r\n\r\n"+Contenido;//Agregar mas datos;
+        _body=Contenido;//Agregar mas datos;
 
 
 
@@ -102,7 +97,7 @@ public class Mail extends javax.mail.Authenticator{
 
                 MimeMessage msg = new MimeMessage(session);
 
-                msg.setFrom(new InternetAddress(gp.getGlobalPersist("EmailUsuario")));
+                msg.setFrom(new InternetAddress(_from));
 
                 InternetAddress[] addressTo = new InternetAddress[_to.length];
                 for (int i = 0; i < _to.length; i++)
@@ -112,8 +107,7 @@ public class Mail extends javax.mail.Authenticator{
                 msg.setRecipients(MimeMessage.RecipientType.TO, addressTo);
 
                 msg.setSubject(_subject);
-
-
+                msg.setSentDate(new Date());
 
                 // setup message body
                 BodyPart messageBodyPart = new MimeBodyPart();
@@ -182,7 +176,7 @@ public class Mail extends javax.mail.Authenticator{
         //props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.socketFactory.fallback", "false");
 
-        return props;
+        return  props;
     }
 
     // the getters and setters
@@ -222,3 +216,4 @@ public class Mail extends javax.mail.Authenticator{
 
 
 }
+

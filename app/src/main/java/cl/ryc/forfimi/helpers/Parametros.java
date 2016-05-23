@@ -27,9 +27,13 @@ public class Parametros {
     private final String ServicioUsuario="getUser;";
     private final String ServicioModificarUsuario="modUser;";
     private final String ServicioEnviaPalabras="setWord;";
-    private final String ServicioSendPassword="SendPass;";
+    private final String ServicioSendPassword="getC;";
     private final String ServicioNoticias="getNoticias";
-    private final String EditRSS="insertRedes;";
+    private final String EditRSS="setRedes;";
+    private final String chartService="getDatosGraf;";
+    private final String getMensajesHistoricos="getHistorial100;";
+    private final String LoginFacebook="lF;";
+
 
 
 
@@ -117,6 +121,18 @@ public class Parametros {
 
     public String getEditRSS() {
         return EditRSS;
+    }
+
+    public String getChartService() {
+        return chartService;
+    }
+
+    public String getGetMensajesHistoricos() {
+        return getMensajesHistoricos;
+    }
+
+    public String getLoginFacebook() {
+        return LoginFacebook;
     }
 }
 

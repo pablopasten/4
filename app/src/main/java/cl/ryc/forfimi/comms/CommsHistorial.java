@@ -11,56 +11,54 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import cl.ryc.forfimi.Login;
-import cl.ryc.forfimi.Messages;
-import cl.ryc.forfimi.entities.LoginUsuario;
+import cl.ryc.forfimi.Historial;
 import cl.ryc.forfimi.entities.Msg;
 import cl.ryc.forfimi.error.ErrorHandler;
 import cl.ryc.forfimi.helpers.DataFromServer;
 import cl.ryc.forfimi.helpers.Parametros;
 
 /**
- * Created by RyC on 11/04/2016.
+ * Created by RyC on 10/05/2016.
  */
-public class CommsMessages extends AsyncTask {
+public class CommsHistorial extends AsyncTask {
 
-    String URL1,URL2;
-    String Usuario;
+
     Context c;
     ProgressDialog pd;
+
+    JSONArray result1;
+    List<Msg> Negativos;
+
     Parametros parametro;
-    JSONArray result1,result2;
-    List<Msg> Positivos, Negativos;
+    String URL1;
+    String Usuario;
     ErrorHandler eh;
-    public CommsMessages (Context con, ProgressDialog p, String idUsuario){
 
-        this.c=con;
-        this.pd=p;
-        this.Usuario=idUsuario;
+    public CommsHistorial(Context con, ProgressDialog p, String idUsuario) {
 
+        pd = p;
+        c = con;
+        this.Usuario = idUsuario;
     }
+
 
     @Override
     protected Object doInBackground(Object[] params) {
 
-        DataFromServer dfs= new DataFromServer();
-        parametro= Parametros.getInstance();
-        Positivos= new ArrayList<Msg>();
-        Negativos= new ArrayList<Msg>();
+        DataFromServer dfs = new DataFromServer();
+        parametro = Parametros.getInstance();
+        Negativos = new ArrayList<Msg>();
 
-        URL1=parametro.getHOSTURL()+parametro.getPORT()+parametro.getAPI()+parametro.getServicioHistorial()+";id_usuario="+this.Usuario;
+        URL1 = parametro.getHOSTURL() + parametro.getPORT() + parametro.getAPI() + parametro.getGetMensajesHistoricos() + ";id_usuario=" + this.Usuario;
         System.out.println(URL1);
-        result1=dfs.GetDataFromServer(URL1,1);
+        result1 = dfs.GetDataFromServer(URL1, 1);
 
-        if(result1!=null && eh.getLastError()==0)
-        {
+        if (result1 != null && eh.getLastError() == 0) {
             //Vamos a sacar los resultados del json
 
-            for(int cont=0;cont<result1.length();cont++)
-            {
-                JSONObject json_data=null;
-                try
-                {
+            for (int cont = 0; cont < result1.length(); cont++) {
+                JSONObject json_data = null;
+                try {
                     json_data = this.result1.getJSONObject(cont);
                     Msg m = new Msg();
 
@@ -68,39 +66,28 @@ public class CommsMessages extends AsyncTask {
                     m.setComentario(json_data.getString("comentario"));
                     m.setId_red_social(json_data.getInt("id_red_social"));
                     m.setFecha(json_data.getString("fecha"));
-                    if(json_data.getString("tipo_comentario").equals("positivo"))
-                    {
-                        Positivos.add(m);
-                    }
-                    else
-                    {
-                        Negativos.add(m);
-                    }
 
 
-
+                    Negativos.add(m);
 
 
                     //ViewsHelper.setStatusComms(NoError);
 
-                }
-                catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     // TODO Auto-generated catch block
                     // ViewsHelper.setStatusComms(JsonProblem);
                     e.printStackTrace();
                 }
+
             }
         }
-
 
         return null;
     }
 
 
     @Override
-    protected void onPreExecute()
-    {
+    protected void onPreExecute() {
         // TODO Auto-generated method stub
         super.onPreExecute();
 
@@ -110,6 +97,7 @@ public class CommsMessages extends AsyncTask {
 
     }
 
+
     protected void onPostExecute(Object result)
     {
         // TODO Auto-generated method stub
@@ -117,7 +105,8 @@ public class CommsMessages extends AsyncTask {
 
         int Error=0;
 
-        Messages.onAsyncBack(Positivos,Negativos,Error);
+        Historial.onAsyncBack(Negativos, Error);
         pd.dismiss();
     }
+
 }

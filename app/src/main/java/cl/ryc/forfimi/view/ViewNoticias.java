@@ -46,37 +46,21 @@ public class ViewNoticias {
         int [] controles = new int []{R.id.txtTitulo,R.id.txtContenido,R.id.imgNoticias};
         String [] keys = new String [] {"sKeyTitulo","sKeyContenido","skeyImagen"};
 
+        System.out.println("Armando Lista");
 
 
         for(int cont=0; cont<n.size();cont++)
         {
             value = new HashMap<String,Object>();
 
-            //value.put("sKeyTitulo", this.n.get(cont).getTitulo());
-            //value.put("sKeyContenido",this.n.get(cont).getContenido());
-
-            value.put("sKeyTitulo", "Titulo de prueba1");
-            value.put("sKeyContenido", "Este es un contenido de prueba");
-
-            String u="http://yucatan.com.mx/wp-content/uploads/2015/09/asteroides.jpg";
-
-            URL url = null;
-            try {
-                url = new URL(u);
-
-                Drawable d = Drawable.createFromStream(url.openStream(), "src");
-                value.put("sKeyImagen", R.drawable.abc_btn_borderless_material );
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            value.put("sKeyTitulo",n.get(cont).getTitulo());
+            value.put("sKeyContenido",n.get(cont).getContenido());
+            value.put("skeyImagen",n.get(cont).getImagen());
 
             Values.add(value);
 
         }
-        value = new HashMap<String,Object>();
+       /* value = new HashMap<String,Object>();
 
         //value.put("sKeyTitulo", this.n.get(cont).getTitulo());
         //value.put("sKeyContenido",this.n.get(cont).getContenido());
@@ -118,7 +102,7 @@ public class ViewNoticias {
 
 
         Values.add(value);
-        System.out.println("aaaaQUIIIIIIII");
+        System.out.println("aaaaQUIIIIIIII");*/
 
         sa=new MyAdapter(c, Values, R.layout.noti_layout, keys, controles);
 

@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import cl.ryc.forfimi.comms.CommsSendPassword;
 import cl.ryc.forfimi.comms.CommsSignIn;
 import cl.ryc.forfimi.comms.GetIDCloudMessage;
 import cl.ryc.forfimi.comms.LoginComms;
@@ -249,7 +250,7 @@ public class Login extends AppCompatActivity {
                     } else {
                         pd= new ProgressDialog(c);
                         pd.setMessage("Estamos validando tu cuenta");
-                        LoginComms cl= new LoginComms(c,pd,Usuario.getText().toString(),Password.getText().toString(),0);
+                        LoginComms cl= new LoginComms(c,pd,Usuario.getText().toString(),Password.getText().toString(),0,0);
                         cl.execute("");
                     }
 
@@ -268,6 +269,7 @@ public class Login extends AppCompatActivity {
 
         public void onClick(View v)
         {
+            FacebookId="";
             Intent intent = new Intent(c.getApplicationContext(), cl.ryc.forfimi.Sigin.class);
             c.startActivity(intent);
 
@@ -321,6 +323,7 @@ public class Login extends AppCompatActivity {
 
     public void SolicitudContraseña(String email)
     {
-
+        CommsSendPassword csp= new CommsSendPassword(email);
+        csp.execute("");
     }
 }

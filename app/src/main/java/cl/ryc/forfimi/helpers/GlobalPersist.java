@@ -61,7 +61,7 @@ public class GlobalPersist
 
     public static boolean VaidateExistsKey(String NameToken)
     {
-        String value = settings.getString(NameToken,null);
+        String value = settings.getString(NameToken, null);
 
         if (value == null) {
             return false;
@@ -69,6 +69,14 @@ public class GlobalPersist
             // handle the value
             return true;
         }
+
+    }
+
+    public static void clearAll()
+    {
+        SharedPreferences.Editor editor = settings.edit();
+        editor.clear();
+        editor.commit();
 
     }
 

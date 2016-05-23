@@ -10,26 +10,27 @@ import java.util.HashMap;
 import java.util.List;
 
 import cl.ryc.forfimi.R;
+import cl.ryc.forfimi.comms.CommsHistorial;
 import cl.ryc.forfimi.comms.CommsMessages;
 import cl.ryc.forfimi.entities.Msg;
 
 /**
- * Created by RyC on 11/04/2016.
+ * Created by RyC on 10/05/2016.
  */
-public class ViewMessages {
-
+public class ViewHistorial {
 
     Context c;
     ProgressDialog pd;
-    List<Msg> Positivos,Negativos;
-    CommsMessages cm;
-    public ViewMessages(Context con, ProgressDialog p,String IdUsuario){
+    List<Msg> Negativos;
+    CommsHistorial ch;
+
+    public ViewHistorial (Context con, ProgressDialog p,String IdUsuario){
 
         this.c=con;
         this.pd=p;
 
-        cm= new CommsMessages(con,p,IdUsuario);
-        cm.execute("");
+        ch= new CommsHistorial(con,p,IdUsuario);
+        ch.execute("");
 
     }
 
@@ -65,57 +66,21 @@ public class ViewMessages {
                 e.printStackTrace();
             }
 
-           if(n.get(cont).getId_red_social()==3) {
+            if(n.get(cont).getId_red_social()==3) {
                 value.put("sKeyImagen", R.drawable.instas);
             }
             else if (n.get(cont).getId_red_social()==2){
-            value.put("sKeyImagen", R.drawable.twitter);
+                value.put("sKeyImagen", R.drawable.twitter);
             }
-            else if(n.get(cont).getId_red_social()==4){
-               value.put("sKeyImagen", R.drawable.googles);
-           }
+            else if(n.get(cont).getId_red_social()==4) {
+                value.put("sKeyImagen", R.drawable.googles);
+            }
             Values.add(value);
 
         }
 
 
         sa=new SimpleAdapter(c, Values, R.layout.controlesnegativos, keys, controles);
-        return sa;
-    }
-
-
-    public SimpleAdapter toListViewPositivos (List<Msg> p)
-    {
-
-        Positivos=p;
-        SimpleAdapter sa=null;
-
-        /*List<HashMap<String, Object>> Values = new ArrayList<HashMap<String, Object>>();
-        HashMap<String,Object> value,valu,val,vals,va,vls,v;
-        int [] controles = new int []{R.id.txtContenido ,R.id.iconoRed};
-        String [] keys = new String [] {"sKeyTexto","sKeyImagen"};
-
-
-        for(int cont=0; cont<p.size();cont++)
-        {
-            value = new HashMap<String,Object>();
-
-
-
-
-
-            value.put("sKeyTexto", p.get(cont).getComentario());
-            if(p.get(cont).getId_red_social()==1) {
-                value.put("sKeyImagen", R.drawable.facebook);
-            }
-            else if (p.get(cont).getId_red_social()==2){
-                value.put("sKeyImagen", R.drawable.twitter);
-            }
-            Values.add(value);
-
-        }
-
-        sa=new SimpleAdapter(c, Values, R.layout.controlespositivos, keys, controles);*/
         return sa;
     }
 

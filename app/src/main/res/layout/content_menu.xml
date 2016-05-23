@@ -32,8 +32,8 @@
                 android:background="@drawable/notebookweb">
             </LinearLayout>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/imageView2"
             android:src="@drawable/person"
             android:layout_alignParentTop="true"
