@@ -74,7 +74,7 @@ public class LoginComms extends AsyncTask {
                     lu= new LoginUsuario();
 
 
-
+                    this.lu.setCod_salida(json_data.getInt("cod_salida"));
                     this.lu.setDes_salida(json_data.getString("des_salida"));
                     this.lu.setIdUsuario(json_data.getInt("idUsuario"));
                     this.lu.setEstado(json_data.getInt("estado"));

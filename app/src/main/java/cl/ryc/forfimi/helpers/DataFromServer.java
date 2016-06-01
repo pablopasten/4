@@ -108,6 +108,7 @@ public class DataFromServer {
             }
 
             HttpEntity entity = response.getEntity();
+
             is = entity.getContent();
 
 
@@ -133,6 +134,7 @@ public class DataFromServer {
                 sb.append(reader.readLine() + "\n");
 
                 String line="0";
+                System.out.println(sb);
                 System.out.println("TOTAL DE OBJETOS RECEPCIONADOS: "+sb.length());
                 while ((line = reader.readLine()) != null)
                 {

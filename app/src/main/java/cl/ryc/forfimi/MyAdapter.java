@@ -34,6 +34,10 @@ public class MyAdapter extends SimpleAdapter {
         }
         // get the url from the data you passed to the `Map`
         System.out.println("aaaaQUIIIIIIII");
+        System.out.println("aaaaQUIIIIIIII");
+        System.out.println("aaaaQUIIIIIIII");
+        System.out.println("aaaaQUIIIIIIII");
+        System.out.println("aaaaQUIIIIIIII");
         String url = ((Map)getItem(position)).get("skeyImagen").toString();
         // do Picasso
         System.out.println(url);

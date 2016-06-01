@@ -77,11 +77,13 @@ public class CommsChart extends AsyncTask {
         // TODO Auto-generated method stub
         super.onPostExecute(result);
         System.out.println("Voy a Imprimir el resultado");
-        for (int cont=0;cont<7;cont++){
-            System.out.println(series1Numbers[cont]);
+        if(series1Numbers!=null) {
+            for (int cont = 0; cont < 7; cont++) {
+                System.out.println(series1Numbers[cont]);
+            }
+
+
         }
-
         Act.backfromGetData(series1Numbers);
-
     }
 }

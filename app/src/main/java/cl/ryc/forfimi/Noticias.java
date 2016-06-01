@@ -2,9 +2,12 @@ package cl.ryc.forfimi;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -19,7 +22,7 @@ import cl.ryc.forfimi.view.ViewNoticias;
  */
 public class Noticias extends AppCompatActivity {
 
-    Context c;
+    static Context c;
     static ListView lv;
     static ViewNoticias vn;
 
@@ -46,13 +49,28 @@ public class Noticias extends AppCompatActivity {
 
     }
 
-    public static void backOnGetNoticias(SimpleAdapter sa)
+    public static void backOnGetNoticias(SimpleAdapter sa,ViewNoticias vns)
     {
-            System.out.println("aaaaQUIIIIIIII");
         System.out.println("aaaaQUIIIIIIII");
+        System.out.println("aaaaQUIIIIIIII");
+        vn=vns;
 
-            lv.setAdapter(sa);
+        lv.setAdapter(sa);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                    Noticia n= vn.getNoticiaByPosition(position);
+                    Intent a = new Intent(c.getApplicationContext(),News.class );
+                    a.putExtra("titulo", n.getTitulo());
+                    a.putExtra("contenido",n.getContenido());
+                    a.putExtra("imagen",n.getImagen());
+
+                    c.startActivity(a);
+
+            }
+        });
     }
+
+
 
 }

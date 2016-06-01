@@ -1,5 +1,6 @@
 package cl.ryc.forfimi;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -11,6 +12,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +30,7 @@ import java.util.List;
 
 import cl.ryc.forfimi.comms.CommsChart;
 import cl.ryc.forfimi.entities.Msg;
+import cl.ryc.forfimi.error.ErrorHandler;
 import cl.ryc.forfimi.helpers.GlobalPersist;
 import cl.ryc.forfimi.view.ViewMessages;
 
@@ -41,7 +45,9 @@ public class Messages extends AppCompatActivity {
     static ViewMessages vm;
     private static XYPlot plot;
     //static Number[] series1Numbers= new Number[7];
-    static Number[] seri ;//= {1,2,3,3,3,3,3};
+    //static Number[] seri ;//= {1,2,3,3,3,3,3};
+    ImageButton Reload;
+    Messages a;
 
 
     @Override
@@ -50,7 +56,11 @@ public class Messages extends AppCompatActivity {
         setContentView(R.layout.activity_messages);
         this.c=this;
         lvNegativos=(ListView) findViewById(R.id.lvNegativos);
+        Reload=(ImageButton) findViewById(R.id.btnReload);
+        Reload.setEnabled(false);
 
+        Reload.setOnClickListener(onReload);
+        a=this;
         CommsChart cch=new CommsChart(c,this);
         cch.execute("");
 
@@ -77,6 +87,8 @@ public class Messages extends AppCompatActivity {
 
     public  void createChart(Number[] series1Numbers){
         plot = (XYPlot) findViewById(R.id.plot);
+        System.out.println("******************************************");
+        System.out.println("******************************************");
         System.out.println("******************************************");
         /*for (int cont=0;cont<7;cont++){
 
@@ -147,20 +159,38 @@ public class Messages extends AppCompatActivity {
         for (int cont=0;cont<7;cont++){
             System.out.println(ser[cont]);
         }*/
-        seri=ser;
+        //seri=ser;
         ProgressDialog pd;
 
         System.out.println("test");
 
         pd= new ProgressDialog(c);
+        pd.setMessage("Estamos cargando tus datos");
         GlobalPersist gp= GlobalPersist.getInstance(c);
+        ErrorHandler eh=ErrorHandler.getInstance();
+        System.out.println("Error nª:"+eh.getLastError());
+        if(eh.getLastError()==0) {
+            createChart(ser);
 
-        createChart(seri);
-
-        vm= new ViewMessages(this.c,pd, gp.getGlobalPersist("IdUsuario"));
-
+            vm = new ViewMessages(this.c, pd, gp.getGlobalPersist("IdUsuario"));
+        }
+        else{
+            System.out.println("pase por aqui");
+            pd.dismiss();
+            Toast toast = Toast.makeText(c,"Error de Conexion", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
+            toast.show();
+        }
+        Reload.setEnabled(true);
     }
 
+    View.OnClickListener onReload = new View.OnClickListener() {
 
+        public void onClick(View v) {
+
+            CommsChart cch=new CommsChart(c,a);
+            cch.execute("");
+        }
+    };
 
 }

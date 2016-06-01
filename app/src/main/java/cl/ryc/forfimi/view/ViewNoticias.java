@@ -40,12 +40,13 @@ public class ViewNoticias {
 
         this.n=lista;
 
-
+        System.out.println("hola");
         List<HashMap<String, Object>> Values = new ArrayList<HashMap<String, Object>>();
         HashMap<String,Object> value,valu,val,vals,va,vls,v;
         int [] controles = new int []{R.id.txtTitulo,R.id.txtContenido,R.id.imgNoticias};
         String [] keys = new String [] {"sKeyTitulo","sKeyContenido","skeyImagen"};
 
+        System.out.println("Armando Lista");
         System.out.println("Armando Lista");
 
 
@@ -129,5 +130,11 @@ public class ViewNoticias {
 
 
         return bitmap;
+    }
+
+
+    public Noticia getNoticiaByPosition(int Pos){
+
+        return this.n.get(Pos);
     }
 }

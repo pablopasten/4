@@ -1,5 +1,6 @@
 package cl.ryc.forfimi;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,12 +13,15 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.media.ExifInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -60,9 +64,11 @@ public class Menu extends AppCompatActivity{
             StrictMode.setThreadPolicy(policy);
         }
         setContentView(R.layout.menu_activity);
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.teclasverde);*/
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        //toolbar.setLogo(R.mipmap.ic_launcher);
+        //gp= GlobalPersist.getInstance(this.c);
+        //toolbar.setTitle("Bienvenido :" + gp.getGlobalPersist("NombreUsuario").toUpperCase());
         gp= GlobalPersist.getInstance(this);
         getControls();
 
@@ -189,6 +195,7 @@ public class Menu extends AppCompatActivity{
         return output;
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     public Bitmap getFoto(String Nombre)
     {
         final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -201,7 +208,7 @@ public class Menu extends AppCompatActivity{
         options.inJustDecodeBounds = false;
         Bitmap bitmap= BitmapFactory.decodeFile(Nombre, options);
 
-        if (bitmap.getWidth()>bitmap.getHeight())
+       /* if (bitmap.getWidth()>bitmap.getHeight())
         {	System.out.println("Voy a rotar la imagen");
             Matrix matrix = new Matrix();
             matrix.postRotate(90); // anti-clockwise by 90 degrees
@@ -212,6 +219,17 @@ public class Menu extends AppCompatActivity{
             // display the rotated bitmap
 
 
+        }*/
+
+        try {
+            ExifInterface exif = new ExifInterface(Nombre);
+            int rotation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            int rotationInDegrees = exifToDegrees(rotation);
+            Matrix matrix = new Matrix();
+            if (rotation != 0f) {matrix.preRotate(rotationInDegrees);}
+            bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
 
@@ -268,4 +286,32 @@ public class Menu extends AppCompatActivity{
         this.finish();
     }
 
+    private static int exifToDegrees(int exifOrientation) {
+        if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) { return 90; }
+        else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180) {  return 180; }
+        else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) {  return 270; }
+        return 0;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

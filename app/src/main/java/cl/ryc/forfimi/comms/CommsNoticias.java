@@ -37,6 +37,7 @@ public class CommsNoticias extends AsyncTask {
     SimpleAdapter sa;
 
     JSONArray result;
+    ViewNoticias vn;
 
 
     public CommsNoticias (Context con, ProgressDialog p)
@@ -96,7 +97,7 @@ public class CommsNoticias extends AsyncTask {
 
                 /*ARMAMOS EL ADAPTER */
 
-            ViewNoticias vn = new ViewNoticias(this.c);
+             vn = new ViewNoticias(this.c);
 
             sa = vn.toListView(Listado);
         }
@@ -123,7 +124,7 @@ public class CommsNoticias extends AsyncTask {
 
         int Error=0;
 
-        Noticias.backOnGetNoticias(sa);
+        Noticias.backOnGetNoticias(sa, vn);
         pd.dismiss();
     }
 

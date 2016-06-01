@@ -44,30 +44,36 @@ public class ViewMenu {
         System.out.println("Armando Lista");
         System.out.println("Armando Lista");
         System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
+        System.out.println("Armando Lista");
 
-
-        value.put("sKeyTexto", "Mensajes");
-        value.put("sKeyFondo", R.drawable.ic_forum_black_36dp);
+        value.put("sKeyTexto", "Menciones");
+        value.put("sKeyFondo", R.drawable.ic_forum_white_36dp);
         Values.add(value);
 
         valu = new HashMap<String,Object>();
         valu.put("sKeyTexto", "Perfil");
-        valu.put("sKeyFondo", R.drawable.ic_face_black_36dp);
+        valu.put("sKeyFondo", R.drawable.ic_face_white_36dp);
         Values.add(valu);
 
         val = new HashMap<String,Object>();
         val.put("sKeyTexto", "Historial");
-        val.put("sKeyFondo", R.drawable.ic_restore_black_36dp);
+        val.put("sKeyFondo", R.drawable.ic_restore_white_36dp);
         Values.add(val);
 
         vls = new HashMap<String,Object>();
         vls.put("sKeyTexto", "Noticias");
-        vls.put("sKeyFondo", R.drawable.ic_import_contacts_black_36dp);
+        vls.put("sKeyFondo", R.drawable.ic_import_contacts_white_36dp);
         Values.add(vls);
         System.out.println("Armando Lista");
         v = new HashMap<String,Object>();
         v.put("sKeyTexto", "Contacto");
-        v.put("sKeyFondo", R.drawable.ic_email_black_36dp);
+        v.put("sKeyFondo", R.drawable.ic_mail_white_36dp);
         Values.add(v);
 
 

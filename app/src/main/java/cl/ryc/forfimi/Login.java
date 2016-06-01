@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -40,8 +39,6 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.Random;
-
-import cl.ryc.forfimi.entities.LoginUsuario;
 
 public class Login extends AppCompatActivity {
 
@@ -178,7 +175,7 @@ public class Login extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_login, menu);
+        getMenuInflater().inflate(R.menu.menu_menu, menu);
         return true;
     }
 
@@ -248,6 +245,7 @@ public class Login extends AppCompatActivity {
                         Snackbar.make(v, "Debes ingresar email valido", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     } else {
+                        FacebookId="";
                         pd= new ProgressDialog(c);
                         pd.setMessage("Estamos validando tu cuenta");
                         LoginComms cl= new LoginComms(c,pd,Usuario.getText().toString(),Password.getText().toString(),0,0);
@@ -279,10 +277,11 @@ public class Login extends AppCompatActivity {
 
     public static void onBack(LoginUsuario lu){
 
-        if(lu.getCod_salida()!=0){
+        if(lu.getCod_salida()==1){
             Toast toast = Toast.makeText(c,"Error:"+lu.getDes_salida(), Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
             toast.show();
+
         }
         else{
 

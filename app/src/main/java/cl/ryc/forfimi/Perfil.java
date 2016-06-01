@@ -78,6 +78,8 @@ public class Perfil extends AppCompatActivity {
         newdir = new File(dir);
         newdir.mkdirs();
         System.out.println("aaaaQUIIIIIIII");
+        System.out.println("aaaaQUIIIIIIII");
+        System.out.println("aaaaQUIIIIIIII");
         Password=(EditText) findViewById(R.id.edtPSW);
         Empresa1=(EditText) findViewById(R.id.edtEActual);
         Empresa2=(EditText) findViewById(R.id.edtEAnterior);
@@ -208,7 +210,7 @@ public class Perfil extends AppCompatActivity {
             uriUltimaFoto=outputFileUri.toString();
 
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
+            cameraIntent.putExtra("android.intent.extras.CAMERA_FACING", 1);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
 
             //cameraIntent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());

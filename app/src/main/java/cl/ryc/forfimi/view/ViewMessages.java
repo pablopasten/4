@@ -42,11 +42,11 @@ public class ViewMessages {
 
         List<HashMap<String, Object>> Values = new ArrayList<HashMap<String, Object>>();
         HashMap<String,Object> value,valu,val,vals,va,vls,v;
-        int [] controles = new int []{R.id.txtContenido,R.id.iconoRed};
-        String [] keys = new String [] {"sKeyTexto","sKeyImagen"};
+        int [] controles = new int []{R.id.txtContenido,R.id.iconoRed,R.id.iconoEstado,R.id.txtFecha};
+        String [] keys = new String [] {"sKeyTexto","sKeyImagen","skeyTipo","skeyFecha"};
 
 
-
+        System.out.println("hola");
         for(int cont=0; cont<n.size();cont++)
         {
             value = new HashMap<String,Object>();
@@ -74,6 +74,18 @@ public class ViewMessages {
             else if(n.get(cont).getId_red_social()==4){
                value.put("sKeyImagen", R.drawable.googles);
            }
+
+
+           if(n.get(cont).getTipoComentario().equals("negativo"))
+           {
+               value.put("skeyTipo",R.drawable.ic_sentiment_dissatisfied_black_18dp);
+           }
+            else
+           {
+                value.put("skeyTipo",R.drawable.ic_sentiment_satisfied_black_18dp);
+           }
+
+            value.put("skeyFecha",n.get(cont).getFecha());
             Values.add(value);
 
         }

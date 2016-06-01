@@ -111,9 +111,9 @@
                     android:theme="@style/editextColor"
                     android:textColor="#FFFFFF"/>
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Modificar mis foto"
+                    android:text="Mi Foto"
                     android:id="@+id/btnModificarFoto"
                     android:background="#22a78c"
                     android:layout_marginTop="25dp"
@@ -122,9 +122,9 @@
                     android:textColor="#ffffff"
                     android:textStyle="bold"/>
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Modificar mis datos"
+                    android:text="Guardar"
                     android:id="@+id/btnModificar"
                     android:background="#22a78c"
                     android:layout_marginTop="25dp"

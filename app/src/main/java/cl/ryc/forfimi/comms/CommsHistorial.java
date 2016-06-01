@@ -66,6 +66,7 @@ public class CommsHistorial extends AsyncTask {
                     m.setComentario(json_data.getString("comentario"));
                     m.setId_red_social(json_data.getInt("id_red_social"));
                     m.setFecha(json_data.getString("fecha"));
+                    m.setTipoComentario(json_data.getString("tipo_comentario"));
 
 
                     Negativos.add(m);

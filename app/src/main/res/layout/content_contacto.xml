@@ -23,11 +23,11 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:id="@+id/imageView"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:src="@drawable/logo"
             android:contentDescription="logo"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="0dp"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
