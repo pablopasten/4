@@ -53,6 +53,8 @@ public class ViewHistorial {
             value = new HashMap<String,Object>();
 
 
+
+            
             byte ptext[] = new byte[0];
             try {
                 ptext = n.get(cont).getComentario().getBytes("ISO-8859-1");
