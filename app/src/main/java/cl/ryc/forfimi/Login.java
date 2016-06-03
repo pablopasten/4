@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
          * Registramos el dispositivo en GCM sòlo si no existe previamente
          */
 
-       if  (!gp.VaidateExistsKey("IDGCM")) {
+       if  (!gp.VaidateExistsKey("IDGCM")|| gp.getGlobalPersist("IDGCM").equals("")) {
 
            GetIDCloudMessage gidgcm = new GetIDCloudMessage(this);
            gidgcm.execute("");
