@@ -21,6 +21,7 @@ import cl.ryc.forfimi.comms.CommsSignIn;
 import cl.ryc.forfimi.comms.GetIDCloudMessage;
 import cl.ryc.forfimi.comms.LoginComms;
 import cl.ryc.forfimi.entities.LoginUsuario;
+import cl.ryc.forfimi.error.ErrorHandler;
 import cl.ryc.forfimi.helpers.GlobalPersist;
 import cl.ryc.forfimi.helpers.ValidateHelper;
 
@@ -276,25 +277,31 @@ public class Login extends AppCompatActivity {
 
 
     public static void onBack(LoginUsuario lu){
+        ErrorHandler eh=ErrorHandler.getInstance();
+        if(eh.getLastError()==0) {
+            if (lu.getCod_salida() == 1) {
+                Toast toast = Toast.makeText(c, "Error:" + lu.getDes_salida(), Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+                toast.show();
 
-        if(lu.getCod_salida()==1){
-            Toast toast = Toast.makeText(c,"Error:"+lu.getDes_salida(), Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
-            toast.show();
+            } else {
 
+                GlobalPersist gp = GlobalPersist.getInstance(c);
+                gp.setGlobalPersist("NombreUsuario", lu.getNombre());
+                gp.setGlobalPersist("IdUsuario", "" + lu.getIdUsuario());
+                gp.setGlobalPersist("TipoPerfil", "" + lu.getPerfil());
+                if (!FacebookId.equals("")) {
+                    gp.setGlobalPersist("FacebookID", FacebookId);
+                }
+                Intent intent = new Intent(c.getApplicationContext(), cl.ryc.forfimi.Menu.class);
+                c.startActivity(intent);
+            }
         }
         else{
 
-            GlobalPersist gp= GlobalPersist.getInstance(c);
-            gp.setGlobalPersist("NombreUsuario",lu.getNombre());
-            gp.setGlobalPersist("IdUsuario",""+lu.getIdUsuario());
-            gp.setGlobalPersist("TipoPerfil",""+lu.getPerfil());
-            if(!FacebookId.equals(""))
-            {
-                gp.setGlobalPersist("FacebookID",FacebookId);
-            }
-            Intent intent = new Intent(c.getApplicationContext(), cl.ryc.forfimi.Menu.class);
-            c.startActivity(intent);
+            Toast toast = Toast.makeText(c,"Error de Conexion", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
+            toast.show();
         }
 
     }

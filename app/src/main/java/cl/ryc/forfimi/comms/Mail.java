@@ -28,7 +28,7 @@ import javax.activation.MailcapCommandMap;
 import cl.ryc.forfimi.helpers.GlobalPersist;
 
 
-public class Mail extends javax.mail.Authenticator{
+public class  Mail extends javax.mail.Authenticator{
 
 
     private String _user;

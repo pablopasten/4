@@ -61,7 +61,7 @@ public class ViewHistorial {
             try {
                 String coment = new String(ptext, "UTF-8");
                 value.put("sKeyTexto",coment);
-            } catch (UnsupportedEncodingException e) {
+            } catch (UnsupportedEncodingException e) { 
                 e.printStackTrace();
             }
 
